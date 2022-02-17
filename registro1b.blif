@@ -1,0 +1,11 @@
+#Registro a 1 bit
+
+
+.model registro1b
+.inputs I
+.outputs O
+
+# input, output, rising edge, no clock, reset status: 0
+
+.latch I O re NIL 0
+.end
