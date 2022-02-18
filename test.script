@@ -1,4 +1,11 @@
-rl comparatore8b.blif
+rl datapath.blif
 
-sim 1 0 0 0 1 0 0 0 1 0 0 0 1 0 0 1
+sim 0 1 1 0 1 0 0 0 1 0 1 
+sim 0 1 1 0 1 1 0 0 0 0 1
+sim 0 1 1 1 0 0 0 0 0 0 1
+sim 0 1 1 1 0 0 0 0 0 0 1
+sim 0 1 1 1 0 0 0 0 0 0 1
+sim 0 1 1 1 0 0 0 0 0 0 1
+sim 0 1 1 1 0 0 0 0 0 0 1
+
 

@@ -1,14 +1,14 @@
 #Sommatore a 1 bit
 #
-# Esegue la somma tra bit SOLUZIONE_ACIDA e SOLUZIONE_BASICA (e il riporto in ingresso CIN).
+# Esegue la somma tra bit A e B (e il riporto in ingresso CIN).
 # O e' il risultato e COUT e' il riporto in uscita
 #
 
 .model sommatore1b
-.inputs SOLUZIONE_ACIDA SOLUZIONE_BASICA CIN
+.inputs A B CIN
 .outputs O COUT
 
-.names SOLUZIONE_ACIDA SOLUZIONE_BASICA TEMP 
+.names A B TEMP 
 10 1 
 01 1 
 
@@ -16,7 +16,7 @@
 10 1 
 01 1 
 
-.names SOLUZIONE_ACIDA SOLUZIONE_BASICA CIN COUT 
+.names A B CIN COUT 
 11- 1 
 1-1 1 
 -11 1 
