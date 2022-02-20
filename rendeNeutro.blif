@@ -9,7 +9,7 @@
 .search mux3i8b.blif
 .search mux2i8b.blif
 .search registro8b.blif
-.search sommatore8b.blif
+.search sommatore_ph.blif
 .search sottrattore8b.blif
 .search and.blif
 .search or.blif
@@ -28,7 +28,7 @@
 #primo mux dove avviene la selezione con il segnale start_dp
 .subckt mux2i8b SEGNALE=start_dp A7=ph7 A6=ph6 A5=ph5 A4=ph4 A3=ph3 A2=ph2 A1=ph1 A0=ph0 B7=reg_ph7 B6=reg_ph6 B5=reg_ph5 B4=reg_ph4 B3=reg_ph3 B2=reg_ph2 B1=reg_ph1 B0=reg_ph0 O7=mux_ph7 O6=mux_ph6 O5=mux_ph5 O4=mux_ph4 O3=mux_ph3 O2=mux_ph2 O1=mux_ph1 O0=mux_ph0
 #creazione della somma
-.subckt sommatore8b A7=mux_ph7 A6=mux_ph6 A5=mux_ph5 A4=mux_ph4 A3=mux_ph3 A2=mux_ph3 A1=mux_ph2 A0=mux_ph0 B7=Zero B6=Zero B5=Zero B4=Zero B3=Zero B2=Uno B1=Zero B0=Zero CIN=Zero O7=sph7 O6=sph6 O5=sph5 O4=sph4 O3=sph3 O2=sph2 O1=sph1 O0=sph0 COUT=resto_ph
+.subckt sommatore_ph A7=mux_ph7 A6=mux_ph6 A5=mux_ph5 A4=mux_ph4 A3=mux_ph3 A2=mux_ph3 A1=mux_ph2 A0=mux_ph0 O7=sph7 O6=sph6 O5=sph5 O4=sph4 O3=sph3 O2=sph2 O1=sph1 O0=sph0 
 #creazione sottrazione 
 .subckt sottrattore8b SOLUZIONE_ACIDA7=mux_ph7 SOLUZIONE_ACIDA6=mux_ph6 SOLUZIONE_ACIDA5=mux_ph5 SOLUZIONE_ACIDA4=mux_ph4 SOLUZIONE_ACIDA3=mux_ph3 SOLUZIONE_ACIDA2=mux_ph2 SOLUZIONE_ACIDA1=mux_ph1 SOLUZIONE_ACIDA0=mux_ph0 SOLUZIONE_BASICA7=Zero SOLUZIONE_BASICA6=Zero SOLUZIONE_BASICA5=Zero SOLUZIONE_BASICA4=Zero SOLUZIONE_BASICA3=Uno SOLUZIONE_BASICA2=Zero SOLUZIONE_BASICA1=Zero SOLUZIONE_BASICA0=Zero S7=mph7 S6=mph6 S5=mph5 S4=mph4 S3=mph3 S2=mph2 S1=mph1 S0=mph0 IGNORE=ignore_sottrattore
 #mux selezione tra sph(), mph(), mux_ph()

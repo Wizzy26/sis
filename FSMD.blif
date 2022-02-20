@@ -1,0 +1,17 @@
+.model FSMD
+.inputs RST START pH7 pH6 pH5 pH4 pH3 pH2 pH1 pH0 
+.outputs FINE_OPERAZIONE ERRORE_SENSORE VALVOLA_ACIDO VALVOLA_BASICO fph7 fph6 fph5 fph4 fph3 fph2 fph1 fph0 clk7 clk6 clk5 clk4 clk3 clk2 clk1 clk0 
+
+#importo fsm e datapath
+.search fsm.blif
+.search datapath.blif
+
+
+# passa input e ottieni gli output dei due circuiti.
+.subckt fsm RST=RST START=START pH7=pH7 pH6=pH6 pH5=pH5 pH4=pH4 pH3=pH3 pH2=pH2 pH1=pH1 pH0=pH0 NEUTRO=ph_neutro_dp FINE_OPERAZIONE=FINE_OPERAZIONE ERRORE_SENSORE=ERRORE_SENSORE VALVOLA_ACIDO=VALVOLA_ACIDO VALVOLA_BASICO=VALVOLA_BASICO STR_DP=STR_DP
+.subckt datapath ph7=pH7 ph6=pH6 ph5=pH5 ph4=pH4 ph3=pH3 ph2=pH2 ph1=pH1 ph0=pH0 start_dp=STR_DP Acido=VALVOLA_ACIDO Basico=VALVOLA_BASICO fph7=fph7 fph6=fph6 fph5=fph5 fph4=fph4 fph3=fph3 fph2=fph2 fph1=fph1 fph0=fph0 clk7=clk7 clk6=clk6 clk5=clk5 clk4=clk4 clk3=clk3 clk2=clk2 clk1=clk1 clk0=clk0 ph_neutro=ph_neutro_dp
+
+
+
+
+.end
