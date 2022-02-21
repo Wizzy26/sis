@@ -1,81 +1,14 @@
 .model datapath
-.inputs ph7 ph6 ph5 ph4 ph3 ph2 ph1 ph0 start_dp Acido Basico
-.outputs fph7 fph6 fph5 fph4 fph3 fph2 fph1 fph0 clk7 clk6 clk5 clk4 clk3 clk2 clk1 clk0 ph_neutro
-# Importa i componenti necessari
- #mux a 3 ingressi da 8 bit
-.search mux3i8b.blif
+.inputs ph7 ph6 ph5 ph4 ph3 ph2 ph1 ph0 start_dp Acido Basico 
+.outputs fph7 fph6 fph5 fph4 fph3 fph2 fph1 fph0 Nclk7 Nclk6 Nclk5 Nclk4 Nclk3 Nclk2 Nclk1 Nclk0 neutro_ph
+
+.search rendeNeutro.blif
+.search contatore.blif
+
+.subckt contatore start_dp=start_dp neutro=neutro_ph clk7=Nclk7 clk6=Nclk6 clk5=Nclk5 clk4=Nclk4 clk3=Nclk3 clk2=Nclk2 clk1=Nclk1 clk0=Nclk0
 
 
-.search maggiore8b.blif 
-.search comparatore8b.blif
-.search minoreuguale8b.blif
-.search mux2i8b.blif
-.search registro8b.blif
-.search sommatore8b.blif
-#.search sommatore8b_clk.blif
-.search sottrattore8b.blif
-.search and.blif
-.search or.blif
-.search uno.blif
-.search zero.blif
-
-
-#latch per attendere il segnale da fsm
-.latch start_dp start_dp_in re NIL 0
-.latch Acido Acido_in re NIL 0
-.latch Basico Basico_in re NIL 0
-
-
-#creo la costante ZERO
-.subckt zero out=Zero
-#creo la costante Uno
-.subckt uno out=Uno
-
-#il sommatore
-.subckt sommatore8b A7=out_ph7 A6=out_ph6 A5=out_ph5 A4=out_ph4 A3=out_ph3 A2=out_ph2 A1=out_ph1 A0=out_ph0 B7=Zero B6=Zero B5=Zero B4=Zero B3=Zero B2=Uno B1=Zero B0=Zero CIN=Zero O7=sph7 O6=sph6 O5=sph5 O4=sph4 O3=sph3 O2=sph2 O1=sph1 O0=sph0 COUT=resto
-
-#il sotrattore
-.subckt sottrattore8b SOLUZIONE_ACIDA7=out_ph7 SOLUZIONE_ACIDA6=out_ph6 SOLUZIONE_ACIDA5=out_ph5 SOLUZIONE_ACIDA4=out_ph4 SOLUZIONE_ACIDA3=out_ph3 SOLUZIONE_ACIDA2=out_ph2 SOLUZIONE_ACIDA1=out_ph1 SOLUZIONE_ACIDA0=out_ph0 SOLUZIONE_BASICA7=Zero SOLUZIONE_BASICA6=Zero SOLUZIONE_BASICA5=Zero SOLUZIONE_BASICA4=Zero SOLUZIONE_BASICA3=Uno SOLUZIONE_BASICA2=Zero SOLUZIONE_BASICA1=Zero SOLUZIONE_BASICA0=Zero S7=mph7 S6=mph6 S5=mph5 S4=mph4 S3=mph3 S2=mph2 S1=mph1 S0=mph0
-
-#mux 3 ingressi 8b
-.subckt mux3i8b ACIDO=Acido_in BASICO=Basico_in A7=out_ph7 A6=out_ph6 A5=out_ph5 A4=out_ph4 A3=out_ph3 A2=out_ph2 A1=out_ph1 A0=out_ph0 B7=sph7 B6=sph6 B5=sph5 B4=sph4 B3=sph3 B2=sph2 B1=sph1 B0=sph0 C7=mph7 C6=mph6 C5=mph5 C4=mph4 C3=mph3 C2=mph2 C1=mph1 C0=mph0 O7=mux_ph7 O6=mux_ph6 O5=mux_ph5 O4=mux_ph4 O3=mux_ph3 O2=mux_ph2 O1=mux_ph1 O0=mux_ph0 
-#registro per il ph
-.subckt registro8b I7=mux_ph7 I6=mux_ph6 I5=mux_ph5 I4=mux_ph4 I3=mux_ph3 I2=mux_ph2 I1=mux_ph1 I0=mux_ph0 O7=reg_ph7 O6=reg_ph6 O5=reg_ph5 O4=reg_ph4 O3=reg_ph3 O2=reg_ph2 O1=reg_ph1 O0=reg_ph0
-#mux del ph iniziale
-.subckt mux2i8b SEGNALE=start_dp_in A7=ph7 A6=ph6 A5=ph5 A4=ph4 A3=ph3 A2=ph2 A1=ph1 A0=ph0 B7=reg_ph7 B6=reg_ph6 B5=reg_ph5 B4=reg_ph4 B3=reg_ph3 B2=reg_ph2 B1=reg_ph1 B0=reg_ph0 O7=out_ph7 O6=out_ph6 O5=out_ph5 O4=out_ph4 O3=out_ph3 O2=out_ph2 O1=out_ph1 O0=out_ph0
-
-#minore uguale
-.subckt minoreuguale8b ph7=out_ph7 ph6=out_ph6 ph5=out_ph5 ph4=out_ph4 ph3=out_ph3 ph2=out_ph2 ph1=out_ph1 ph0=out_ph0 bit7=Uno bit6=Zero bit5=Zero bit4=Zero bit3=Zero bit2=Zero bit1=Zero bit0=Zero O0=out_minore_uguale
-
-#maggiore uguale (composto da un maggiore, uguale e un or)
-#comparatore
-.subckt comparatore8 ph7=out_ph7 ph6=out_ph6 ph5=out_ph5 ph4=out_ph4 ph3=out_ph3 ph2=out_ph2 ph1=out_ph1 ph0=out_ph0 bit7=Zero bit6=Uno bit5=Uno bit4=Uno bit3=Zero bit2=Zero bit1=Zero bit0=Zero O0=out_comparatore 
-#maggiore
-.subckt maggiore8b ph7=out_ph7 ph6=out_ph6 ph5=out_ph5 ph4=out_ph4 ph3=out_ph3 ph2=out_ph2 ph1=out_ph1 ph0=out_ph0 bit7=Zero bit6=Uno bit5=Uno bit4=Uno bit3=Zero bit2=Zero bit1=Zero bit0=Zero out=out_maggiore
-#or tra comparatore e maggiore
-.subckt or A=out_comparatore  B=out_maggiore O=out_or
-#and tra minore_uguale e maggiore_uguale(composto da comparatore e maggiore)
-.subckt and A=out_or B=out_minore_uguale O=ph_neutro
-#mux finale del controllo del ph
-.subckt mux2i8b SEGNALE=ph_neutro A7=out_ph7 A6=out_ph6 A5=out_ph5 A4=out_ph4 A3=out_ph3 A2=out_ph2 A1=out_ph1 A0=out_ph0 B7=Zero B6=Zero B5=Zero B4=Zero B3=Zero B2=Zero B1=Zero B0=Zero O7=fph7 O6=fph6 O5=fph5 O4=fph4 O3=fph3 O2=fph2 O1=fph1 O0=fph0
-
-
-#sommatore di clk
-.subckt sommatore8b A7=clk7 A6=clk6 A5=clk5 A4=clk4 A3=clk3 A2=clk2 A1=clk1 A0=clk0 B7=Zero B6=Zero B5=Zero B4=Uno B3=Zero B2=Zero B1=Zero B0=Zero CIN=Zero O7=sclk7 O6=sclk6 O5=sclk5 O4=sclk4 O3=sclk3 O2=sclk2 O1=sclk1 O0=sclk0 COUT=out_somma_clk
-#mux che seleziona tra un clock+1 e un clock
-.subckt mux2i8b SEGNALE=ph_neutro A7=clk7 A6=clk6 A5=clk5 A4=clk4 A3=clk3 A2=clk2 A1=clk1 A0=clk0 B7=sclk7 B6=sclk6 B5=sclk5 B4=sclk4 B3=sclk3 B2=sclk2 B1=sclk1 B0=sclk0 O7=mux_clk7 O6=mux_clk6 O5=mux_clk5 O4=mux_clk4 O3=mux_clk3 O2=mux_clk2 O1=mux_clk1 O0=mux_clk0
-#registro del clk
-.subckt registro8b I7=mux_ph7 I6=mux_ph6 I5=mux_ph5 I4=mux_ph4 I3=mux_ph3 I2=mux_ph2 I1=mux_ph1 I0=mux_ph0 O7=reg_clk7 O6=reg_clk6 O5=reg_clk5 O4=reg_clk4 O3=reg_clk3 O2=reg_clk2 O1=reg_clk1 O0=reg_clk0
-
-
-
-#mux selezione clk(tra quello sommato o zero)
-.subckt mux2i8b SEGNALE=start_dp_in A7=Zero A6=Zero A5=Zero A4=Zero A3=Zero A2=Zero A1=Zero A0=Zero B7=reg_clk7 B6=reg_clk6 B5=reg_clk5 B4=reg_clk4 B3=reg_clk3 B2=reg_clk2 B1=reg_clk1 B0=reg_clk0 O7=clk7 O6=clk6 O5=clk5 O4=clk4 O3=clk3 O2=clk2 O1=clk1 O0=clk0
-#mux finale clk per dare in output i NCLK
-.subckt mux2i8b SEGNALE=ph_neutro A7=Zero A6=Zero A5=Zero A4=Zero A3=Zero A2=Zero A1=Zero A0=Zero B7=clk7 B6=clk6 B5=clk5 B4=clk4 B3=clk3 B2=clk2 B1=clk1 B0=clk0 O7=nclk7 O6=nclk6 O5=nclk5 O4=nclk4 O3=nclk3 O2=nclk2 O1=nclk1 O0=nclk0 
-
-
-
+.subckt rendeNeutro ph7=ph7 ph6=ph6 ph5=ph5 ph4=ph4 ph3=ph3 ph2=ph2 ph1=ph1 ph0=ph0 start_dp=start_dp Acido=Acido Basico=Basico fph7=fph7 fph6=fph6 fph5=fph5 fph4=fph4 fph3=fph3 fph2=fph2 fph1=fph1 fph0=fph0 neutro=neutro_ph
 
 
 .end

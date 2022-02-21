@@ -11,7 +11,7 @@
 
 # se segnale a 1 sceglie I1 se 0 sceglie I0
 .names SEGNALE I1 I0 O
-001 1
-110 1 
+0-1 1
+11- 1 
 
 .end
