@@ -14,12 +14,12 @@
 
 #Uso 8 sommatori a 1 bit
 .subckt sommatore1b_modificato A=A0 B=Zero CIN=Zero O=O0 COUT=TEMP0 
-.subckt sommatore1b_modificato A=A1 B=TEMP0 CIN=Zero O=O1 COUT=TEMP1 
-.subckt sommatore1b_modificato A=A2 B=Uno CIN=Zero O=O2 COUT=TEMP2
-.subckt sommatore1b_modificato A=A3 B=TEMP2 CIN=Zero O=O3 COUT=TEMP3 
-.subckt sommatore1b_modificato A=A4 B=TEMP3 CIN=Zero O=O4 COUT=TEMP4
-.subckt sommatore1b_modificato A=A5 B=TEMP4 CIN=Zero O=O5 COUT=TEMP5
-.subckt sommatore1b_modificato A=A6 B=TEMP5 CIN=Zero O=O6 COUT=TEMP6 
-.subckt sommatore1b_modificato A=A7 B=TEMP6 CIN=Zero O=O7 COUT=TEMP7
+.subckt sommatore1b_modificato A=A1 B=Zero CIN=TEMP0 O=O1 COUT=TEMP1 
+.subckt sommatore1b_modificato A=A2 B=Uno CIN=TEMP1 O=O2 COUT=TEMP2
+.subckt sommatore1b_modificato A=A3 B=Zero CIN=TEMP2 O=O3 COUT=TEMP3 
+.subckt sommatore1b_modificato A=A4 B=Zero CIN=TEMP3 O=O4 COUT=TEMP4
+.subckt sommatore1b_modificato A=A5 B=Zero CIN=TEMP4 O=O5 COUT=TEMP5
+.subckt sommatore1b_modificato A=A6 B=Zero CIN=TEMP5 O=O6 COUT=TEMP6 
+.subckt sommatore1b_modificato A=A7 B=Zero CIN=TEMP6 O=O7 COUT=TEMP7
 
 .end

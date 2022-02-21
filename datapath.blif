@@ -2,7 +2,10 @@
 .inputs ph7 ph6 ph5 ph4 ph3 ph2 ph1 ph0 start_dp Acido Basico
 .outputs fph7 fph6 fph5 fph4 fph3 fph2 fph1 fph0 clk7 clk6 clk5 clk4 clk3 clk2 clk1 clk0 ph_neutro
 # Importa i componenti necessari
-.search mux3i8b.blif #mux a 3 ingressi da 8 bit
+ #mux a 3 ingressi da 8 bit
+.search mux3i8b.blif
+
+
 .search maggiore8b.blif 
 .search comparatore8b.blif
 .search minoreuguale8b.blif
