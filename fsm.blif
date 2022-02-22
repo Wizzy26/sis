@@ -47,98 +47,59 @@
 .code ACIDO 111
 .code BASICO 010
 .code NEUTRO 110
-.names RST START pH7 pH6 pH5 pH4 pH3 pH2 pH1 pH0 NEUTRO LatchOut_v11 \
-LatchOut_v12 LatchOut_v13 [5]
-0---------11-- 1
-0----------1-0 1
-0---------01-1 1
-0---------1-10 1
-0100--------0- 1
-010-0-------0- 1
-010--0------0- 1
-010111------0- 1
-0110000000--0- 1
-.names RST START pH7 pH6 pH5 pH4 pH3 pH2 pH1 pH0 NEUTRO LatchOut_v11 \
-LatchOut_v12 LatchOut_v13 [6]
-0---------11-- 1
-0----------0-1 1
-0----------1-0 1
-0---------01-1 1
-0---------1-10 1
-0100--------0- 1
-010-0-------0- 1
-010--0------0- 1
-0---------0010 1
-01110-------0- 1
-0110-1------0- 1
-0110--1-----0- 1
-0110---1----0- 1
-0110----1---0- 1
-0110-----1--0- 1
-011111------0- 1
-010111------0- 1
-01111-1-----0- 1
-01111--1----0- 1
-01111---1---0- 1
-01111----1--0- 1
-011-100000--0- 1
-0110000000--0- 1
-.names RST START pH7 pH6 pH5 pH4 pH3 pH2 pH1 pH0 NEUTRO LatchOut_v11 \
-LatchOut_v12 LatchOut_v13 [7]
-0----------0-1 1
-0---------01-1 1
-0100--------0- 1
-010-0-------0- 1
-010--0------0- 1
-011111------0- 1
-01111-1-----0- 1
-01111--1----0- 1
-01111---1---0- 1
-01111----1--0- 1
-.names RST START pH7 pH6 pH5 pH4 pH3 pH2 pH1 pH0 NEUTRO LatchOut_v11 \
-LatchOut_v12 LatchOut_v13 FINE_OPERAZIONE
-0---------11-- 1
-0----------1-0 1
-0---------1-10 1
-010111------0- 1
-0110000000--0- 1
-.names RST START pH7 pH6 pH5 pH4 pH3 pH2 pH1 pH0 LatchOut_v11 LatchOut_v12 \
-LatchOut_v13 ERRORE_SENSORE
-0---------0-1 1
-011111-----0- 1
-01111-1----0- 1
-01111--1---0- 1
-01111---1--0- 1
-01111----1-0- 1
-.names RST START pH7 pH6 pH5 pH4 pH3 pH2 pH1 pH0 NEUTRO LatchOut_v11 \
-LatchOut_v12 LatchOut_v13 VALVOLA_ACIDO
-0---------0010 1
-01110-------0- 1
-0110-1------0- 1
-0110--1-----0- 1
-0110---1----0- 1
-0110----1---0- 1
-0110-----1--0- 1
-011-100000--0- 1
-.names RST START pH7 pH6 pH5 pH4 NEUTRO LatchOut_v11 LatchOut_v12 LatchOut_v13 \
-VALVOLA_BASICO
-0-----01-1 1
-0100----0- 1
-010-0---0- 1
-010--0--0- 1
-.names RST START pH7 pH6 pH5 pH4 pH3 pH2 pH1 pH0 LatchOut_v12 STR_DP
-0100------0 1
-010-0-----0 1
-010--0----0 1
-01110-----0 1
-0110-1----0 1
-0110--1---0 1
-0110---1--0 1
-0110----1-0 1
-0110-----10 1
-010111----0 1
-011-1000000 1
-01100000000 1
+.names RST NEUTRO STR_DP LatchOut_v11 LatchOut_v13 [567] [569] [572] [576] \
+[577] FINE_OPERAZIONE
+--1----0-- 1
+-----1--0- 1
+0--1--1--- 1
+-1--0----1 1
+.names RST STR_DP LatchOut_v11 LatchOut_v13 [568] ERRORE_SENSORE
+-0--1 1
+0-01- 1
+.names FINE_OPERAZIONE LatchOut_v13 [567] [576] [577] VALVOLA_ACIDO
+--11- 1
+00--1 1
+.names RST pH7 LatchOut_v11 [568] [569] [572] VALVOLA_BASICO
+0-1-0- 1
+-0-1-1 1
+.names pH7 [566] [568] [574] STR_DP
+0-1- 1
+-11- 1
+--10 1
+.names FINE_OPERAZIONE VALVOLA_BASICO [5]
+1- 1
+-1 1
+.names RST START [577] [6]
+--1 1
+01- 1
+.names ERRORE_SENSORE VALVOLA_BASICO [7]
+1- 1
+-1 1
+.names pH6 pH5 [566]
+0- 1
+-0 1
+.names pH7 STR_DP [567]
+11 1
+.names [6] LatchOut_v12 [568]
+10 1
+.names NEUTRO LatchOut_v13 [569]
+1- 1
+-0 1
+.names pH4 [566] [572]
+0- 1
+-1 1
+.names pH4 pH3 pH2 pH1 pH0 [574]
+1---- 1
+-1--- 1
+--1-- 1
+---1- 1
+----1 1
+.names pH6 pH5 [574] [576]
+1-- 1
+-1- 1
+--1 1
+.names RST LatchOut_v12 [577]
+01 1
 .exdc 
 .inputs RST START pH7 pH6 pH5 pH4 pH3 pH2 pH1 pH0 NEUTRO LatchOut_v11 \
 LatchOut_v12 LatchOut_v13
